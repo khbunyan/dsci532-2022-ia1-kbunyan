@@ -12,6 +12,7 @@ app = Dash(__name__,  external_stylesheets=['https://codepen.io/chriddyp/pen/bWL
 server = app.server
 
 app.layout = html.Div([
+    html.Div("Iris Scatterplot", style={"color": "blue", "fontSize": 26}),
     html.Iframe(
         id='scatter',
         style={'border-width': '0', 'width': '100%', 'height': '400px'}),
@@ -28,8 +29,7 @@ def plot_altair(xcol):
     chart = alt.Chart(iris).mark_point().encode(
         x=xcol,
         y='petalWidth',
-        color='species',
-        tooltip='petalLength').interactive()
+        color='species')
     return chart.to_html()
 
 if __name__ == '__main__':
